@@ -28,4 +28,14 @@ docker run -d -e SUPERVISOR_TOKEN=previously-created-token -e HASSIO_URL=http://
 
 You can access the scheduler now at `http://localhost:8099`.
 
+## to build and push docker image to registry
+
+Run:
+
+```
+build . -t ghcr.io/<USERNAME>/simplescheduler:latest --build-arg BUILD_FROM="ghcr.io/hassio-addons/debian-base/amd64:5.3.1"
+docker login --username <USERNAME> --password <GITHUB_TOKEN> ghcr.io
+docker push ghcr.io/<USERNAME/simplescheduler:latest
+```
+
 
