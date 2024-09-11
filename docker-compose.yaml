@@ -1,0 +1,17 @@
+version: '3'
+services:
+  SimpleScheduler:
+    hostname: SimpleScheduler
+    image: "ghcr.io/sagipael/simplescheduler:latest"
+    container_name: simplescheduler
+    restart: unless-stopped
+    ports:
+      - "8099:8099/tcp"
+    #depends_on:
+    #  - homeassistant
+    volumes:
+      - "/path/to/docker/data/SimpleScheduler:/share/simplescheduler"
+    environment:
+      - TZ=${TZ}
+      - HASSIO_URL="http://{{ HA_HOSTNAME }}:{{ HA_PORT }}/api"
+      - SUPERVISOR_TOKEN="{{ HA_TOKEN }}"
